@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CardView visimisi, akreditasi, profillulusan, tujuan, sejarah, struktur, stafprodi;
+    private CardView visimisi, akreditasi, profillulusan, tujuan, sejarah, struktur, stafprodi, alamat, telp, fasilitas;
+    private Button matkul, hima, ukm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sejarah = (CardView) findViewById(R.id.sejarah);
         struktur = (CardView) findViewById(R.id.struktur);
         stafprodi = (CardView) findViewById(R.id.stafprodi);
+        alamat = (CardView) findViewById(R.id.alamat);
+        telp = (CardView) findViewById(R.id.telp);
+        matkul = (Button) findViewById(R.id.matkul);
+        hima = (Button) findViewById(R.id.hima);
+        ukm = (Button) findViewById(R.id.ukm);
+        fasilitas = (CardView) findViewById(R.id.fasilitas);
 
         //add click listener to the cards
         visimisi.setOnClickListener(this);
@@ -31,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sejarah.setOnClickListener(this);
         struktur.setOnClickListener(this);
         stafprodi.setOnClickListener(this);
+        alamat.setOnClickListener(this);
+        telp.setOnClickListener(this);
+        matkul.setOnClickListener(this);
+        hima.setOnClickListener(this);
+        ukm.setOnClickListener(this);
+        fasilitas.setOnClickListener(this);
     }
 
     @Override
@@ -44,15 +59,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this,Akreditasi.class);startActivity(i); break;
             case R.id.profil_lulusan:
                 i = new Intent(this,ProfilLulusan.class);startActivity(i); break;
-            /* case R.id.tujuan:
-                i = new Intent(this,Tujuan.class);startActivity(i); break;
+            /*case R.id.tujuan:
+                i = new Intent(this,Tujuan.class);startActivity(i); break;*/
             case R.id.sejarah:
                 i = new Intent(this,Sejarah.class);startActivity(i); break;
-             */
             case R.id.struktur:
                 i = new Intent(this,Struktur.class);startActivity(i); break;
             case R.id.stafprodi:
                 i = new Intent(this,StafProdi.class);startActivity(i); break;
+            case R.id.matkul:
+                i = new Intent(this,MataKuliah.class);startActivity(i); break;
+            case R.id.hima:
+                i = new Intent(this,HimpunanMahasiswa.class);startActivity(i); break;
+            case R.id.ukm:
+                i = new Intent(this,Ukm.class);startActivity(i); break;
+            case R.id.fasilitas:
+                i = new Intent(this,Fasilitas.class);startActivity(i); break;
+            case R.id.alamat:
+                String url1 = "https://goo.gl/maps/YyA3UEeXZWM1fehL9";
+                i = new Intent(Intent.ACTION_VIEW); i.setData(Uri.parse(url1));startActivity(i);break;
+            case R.id.telp:
+                String url2 = "tel:0228899007";
+                i = new Intent(Intent.ACTION_VIEW); i.setData(Uri.parse(url2));startActivity(i);break;
             default:break;
         }
     }
